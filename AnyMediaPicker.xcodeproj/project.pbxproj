@@ -1,0 +1,489 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		27D42A7522EFE45443A08182 /* Pods_AnyMediaPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA94714E4497189D0C39EB1D /* Pods_AnyMediaPicker.framework */; };
+		B3F0DC492511068A00007868 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F0DC482511068A00007868 /* AppDelegate.swift */; };
+		B3F0DC4D2511068A00007868 /* MediaListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F0DC4C2511068A00007868 /* MediaListViewController.swift */; };
+		B3F0DC502511068A00007868 /* MediaListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3F0DC4E2511068A00007868 /* MediaListViewController.storyboard */; };
+		B3F0DC522511068B00007868 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3F0DC512511068B00007868 /* Assets.xcassets */; };
+		B3F0DC552511068B00007868 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3F0DC532511068B00007868 /* LaunchScreen.storyboard */; };
+		B3F0DC80251109F300007868 /* MediaListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F0DC7F251109F300007868 /* MediaListModel.swift */; };
+		B3F0DC8225110A1D00007868 /* MediaListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F0DC8125110A1D00007868 /* MediaListViewModel.swift */; };
+		B3F0DC84251113B100007868 /* MediaCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F0DC83251113B100007868 /* MediaCellModel.swift */; };
+		B3F0DC86251113D400007868 /* MediaCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F0DC85251113D400007868 /* MediaCellViewModel.swift */; };
+		B3F0DC88251113DF00007868 /* MediaCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F0DC87251113DF00007868 /* MediaCellView.swift */; };
+		B3F0DC8A251113F000007868 /* MediaCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3F0DC89251113F000007868 /* MediaCellView.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		7D5CE38843FF39DD7AEAEA87 /* Pods-AnyMediaPicker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnyMediaPicker.debug.xcconfig"; path = "Target Support Files/Pods-AnyMediaPicker/Pods-AnyMediaPicker.debug.xcconfig"; sourceTree = "<group>"; };
+		B3F0DC452511068900007868 /* AnyMediaPicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnyMediaPicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3F0DC482511068A00007868 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B3F0DC4C2511068A00007868 /* MediaListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaListViewController.swift; sourceTree = "<group>"; };
+		B3F0DC4F2511068A00007868 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MediaListViewController.storyboard; sourceTree = "<group>"; };
+		B3F0DC512511068B00007868 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B3F0DC542511068B00007868 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B3F0DC562511068B00007868 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B3F0DC7F251109F300007868 /* MediaListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaListModel.swift; sourceTree = "<group>"; };
+		B3F0DC8125110A1D00007868 /* MediaListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaListViewModel.swift; sourceTree = "<group>"; };
+		B3F0DC83251113B100007868 /* MediaCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaCellModel.swift; sourceTree = "<group>"; };
+		B3F0DC85251113D400007868 /* MediaCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaCellViewModel.swift; sourceTree = "<group>"; };
+		B3F0DC87251113DF00007868 /* MediaCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaCellView.swift; sourceTree = "<group>"; };
+		B3F0DC89251113F000007868 /* MediaCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MediaCellView.xib; sourceTree = "<group>"; };
+		D16BB339D96F14B19F5E51AF /* Pods-AnyMediaPicker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnyMediaPicker.release.xcconfig"; path = "Target Support Files/Pods-AnyMediaPicker/Pods-AnyMediaPicker.release.xcconfig"; sourceTree = "<group>"; };
+		DA94714E4497189D0C39EB1D /* Pods_AnyMediaPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnyMediaPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B3F0DC422511068900007868 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27D42A7522EFE45443A08182 /* Pods_AnyMediaPicker.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		172918350C9979354F0A63FE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7D5CE38843FF39DD7AEAEA87 /* Pods-AnyMediaPicker.debug.xcconfig */,
+				D16BB339D96F14B19F5E51AF /* Pods-AnyMediaPicker.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		94987D0CF98A8FE89BD0BD01 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DA94714E4497189D0C39EB1D /* Pods_AnyMediaPicker.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B3F0DC3C2511068900007868 = {
+			isa = PBXGroup;
+			children = (
+				B3F0DC472511068900007868 /* AnyMediaPicker */,
+				B3F0DC462511068900007868 /* Products */,
+				172918350C9979354F0A63FE /* Pods */,
+				94987D0CF98A8FE89BD0BD01 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		B3F0DC462511068900007868 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B3F0DC452511068900007868 /* AnyMediaPicker.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B3F0DC472511068900007868 /* AnyMediaPicker */ = {
+			isa = PBXGroup;
+			children = (
+				B3F0DC78251106CB00007868 /* Sources */,
+				B3F0DC79251106D200007868 /* Resources */,
+				B3F0DC512511068B00007868 /* Assets.xcassets */,
+				B3F0DC532511068B00007868 /* LaunchScreen.storyboard */,
+				B3F0DC562511068B00007868 /* Info.plist */,
+			);
+			path = AnyMediaPicker;
+			sourceTree = "<group>";
+		};
+		B3F0DC78251106CB00007868 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				B3F0DC7E2511071D00007868 /* App */,
+				B3F0DC7A251106DB00007868 /* Models */,
+				B3F0DC7C251106E700007868 /* ViewModels */,
+				B3F0DC7B251106E300007868 /* Views */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		B3F0DC79251106D200007868 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B3F0DC7D2511071200007868 /* UI */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B3F0DC7A251106DB00007868 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B3F0DC7F251109F300007868 /* MediaListModel.swift */,
+				B3F0DC83251113B100007868 /* MediaCellModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B3F0DC7B251106E300007868 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B3F0DC4C2511068A00007868 /* MediaListViewController.swift */,
+				B3F0DC87251113DF00007868 /* MediaCellView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B3F0DC7C251106E700007868 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				B3F0DC8125110A1D00007868 /* MediaListViewModel.swift */,
+				B3F0DC85251113D400007868 /* MediaCellViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		B3F0DC7D2511071200007868 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				B3F0DC4E2511068A00007868 /* MediaListViewController.storyboard */,
+				B3F0DC89251113F000007868 /* MediaCellView.xib */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		B3F0DC7E2511071D00007868 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				B3F0DC482511068A00007868 /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B3F0DC442511068900007868 /* AnyMediaPicker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B3F0DC6F2511068B00007868 /* Build configuration list for PBXNativeTarget "AnyMediaPicker" */;
+			buildPhases = (
+				0192CC9D92451C467112585F /* [CP] Check Pods Manifest.lock */,
+				B3F0DC412511068900007868 /* Sources */,
+				B3F0DC422511068900007868 /* Frameworks */,
+				B3F0DC432511068900007868 /* Resources */,
+				14B154ADB25C868C25ACECEB /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AnyMediaPicker;
+			productName = AnyMediaPicker;
+			productReference = B3F0DC452511068900007868 /* AnyMediaPicker.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B3F0DC3D2511068900007868 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1160;
+				LastUpgradeCheck = 1160;
+				ORGANIZATIONNAME = ZYXW;
+				TargetAttributes = {
+					B3F0DC442511068900007868 = {
+						CreatedOnToolsVersion = 11.6;
+					};
+				};
+			};
+			buildConfigurationList = B3F0DC402511068900007868 /* Build configuration list for PBXProject "AnyMediaPicker" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B3F0DC3C2511068900007868;
+			productRefGroup = B3F0DC462511068900007868 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B3F0DC442511068900007868 /* AnyMediaPicker */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B3F0DC432511068900007868 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3F0DC552511068B00007868 /* LaunchScreen.storyboard in Resources */,
+				B3F0DC8A251113F000007868 /* MediaCellView.xib in Resources */,
+				B3F0DC522511068B00007868 /* Assets.xcassets in Resources */,
+				B3F0DC502511068A00007868 /* MediaListViewController.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0192CC9D92451C467112585F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AnyMediaPicker-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		14B154ADB25C868C25ACECEB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AnyMediaPicker/Pods-AnyMediaPicker-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AnyMediaPicker/Pods-AnyMediaPicker-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AnyMediaPicker/Pods-AnyMediaPicker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B3F0DC412511068900007868 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3F0DC84251113B100007868 /* MediaCellModel.swift in Sources */,
+				B3F0DC4D2511068A00007868 /* MediaListViewController.swift in Sources */,
+				B3F0DC88251113DF00007868 /* MediaCellView.swift in Sources */,
+				B3F0DC492511068A00007868 /* AppDelegate.swift in Sources */,
+				B3F0DC86251113D400007868 /* MediaCellViewModel.swift in Sources */,
+				B3F0DC80251109F300007868 /* MediaListModel.swift in Sources */,
+				B3F0DC8225110A1D00007868 /* MediaListViewModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B3F0DC4E2511068A00007868 /* MediaListViewController.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B3F0DC4F2511068A00007868 /* Base */,
+			);
+			name = MediaListViewController.storyboard;
+			sourceTree = "<group>";
+		};
+		B3F0DC532511068B00007868 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B3F0DC542511068B00007868 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B3F0DC6D2511068B00007868 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B3F0DC6E2511068B00007868 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B3F0DC702511068B00007868 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D5CE38843FF39DD7AEAEA87 /* Pods-AnyMediaPicker.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DD4ZUKAH26;
+				INFOPLIST_FILE = AnyMediaPicker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.zyxw.AnyMediaPicker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B3F0DC712511068B00007868 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D16BB339D96F14B19F5E51AF /* Pods-AnyMediaPicker.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DD4ZUKAH26;
+				INFOPLIST_FILE = AnyMediaPicker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.zyxw.AnyMediaPicker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B3F0DC402511068900007868 /* Build configuration list for PBXProject "AnyMediaPicker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B3F0DC6D2511068B00007868 /* Debug */,
+				B3F0DC6E2511068B00007868 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B3F0DC6F2511068B00007868 /* Build configuration list for PBXNativeTarget "AnyMediaPicker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B3F0DC702511068B00007868 /* Debug */,
+				B3F0DC712511068B00007868 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B3F0DC3D2511068900007868 /* Project object */;
+}

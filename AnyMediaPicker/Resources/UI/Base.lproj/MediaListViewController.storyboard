@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Media List View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="MediaListViewController" customModule="AnyMediaPicker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wk5-xu-GCY">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem title="Item" image="trash.fill" catalog="system" id="4Hq-pY-Rkz"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="DbA-yX-s0B"/>
+                                    <barButtonItem title="Item" image="camera.fill" catalog="system" id="niJ-JG-tOc"/>
+                                    <barButtonItem title="Item" image="photo.fill" catalog="system" id="OPR-7O-lZf"/>
+                                    <barButtonItem title="Item" image="folder.fill" catalog="system" id="uyu-yb-TuT"/>
+                                </items>
+                            </toolbar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iw0-HG-uAt">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Wk5-xu-GCY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7GE-Wo-pKW"/>
+                            <constraint firstItem="Wk5-xu-GCY" firstAttribute="top" secondItem="iw0-HG-uAt" secondAttribute="bottom" id="BTv-To-2O2"/>
+                            <constraint firstItem="iw0-HG-uAt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Ezz-fL-Gg5"/>
+                            <constraint firstItem="iw0-HG-uAt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="NtV-Ws-aPe"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="iw0-HG-uAt" secondAttribute="trailing" id="R0y-qe-1Om"/>
+                            <constraint firstItem="Wk5-xu-GCY" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="ajH-uE-ht4"/>
+                            <constraint firstItem="Wk5-xu-GCY" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="uu1-fM-xB4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="cameraButton" destination="niJ-JG-tOc" id="Gfq-G9-zTe"/>
+                        <outlet property="deleteButton" destination="4Hq-pY-Rkz" id="VFL-rX-CNG"/>
+                        <outlet property="fileButton" destination="uyu-yb-TuT" id="APu-k7-mYk"/>
+                        <outlet property="photoButton" destination="OPR-7O-lZf" id="xdF-B8-cIz"/>
+                        <outlet property="tableView" destination="iw0-HG-uAt" id="FY7-mL-CGY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139" y="127"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="camera.fill" catalog="system" width="128" height="96"/>
+        <image name="folder.fill" catalog="system" width="128" height="95"/>
+        <image name="photo.fill" catalog="system" width="128" height="93"/>
+        <image name="trash.fill" catalog="system" width="121" height="128"/>
+    </resources>
+</document>
