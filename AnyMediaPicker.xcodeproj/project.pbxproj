@@ -93,7 +93,6 @@
 				B3F0DC78251106CB00007868 /* Sources */,
 				B3F0DC79251106D200007868 /* Resources */,
 				B3F0DC512511068B00007868 /* Assets.xcassets */,
-				B3F0DC532511068B00007868 /* LaunchScreen.storyboard */,
 				B3F0DC562511068B00007868 /* Info.plist */,
 			);
 			path = AnyMediaPicker;
@@ -148,6 +147,7 @@
 		B3F0DC7D2511071200007868 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				B3F0DC532511068B00007868 /* LaunchScreen.storyboard */,
 				B3F0DC4E2511068A00007868 /* MediaListViewController.storyboard */,
 				B3F0DC89251113F000007868 /* MediaCellView.xib */,
 			);
