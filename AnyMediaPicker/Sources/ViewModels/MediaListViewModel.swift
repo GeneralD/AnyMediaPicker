@@ -21,6 +21,7 @@ protocol MediaListViewModelInput {
 
 protocol MediaListViewModelOutput {
 	var items: Observable<[MediaCellModel]> { get }
+	var present: Observable<UIViewController> { get }
 }
 
 final class MediaListViewModel: MediaListViewModelInput, MediaListViewModelOutput {
@@ -34,6 +35,7 @@ final class MediaListViewModel: MediaListViewModelInput, MediaListViewModelOutpu
 	
 	// MARK: Outputs
 	let items: Observable<[MediaCellModel]>
+	let present: Observable<UIViewController>
 	
 	private let disposeBag = DisposeBag()
 	
@@ -56,27 +58,64 @@ final class MediaListViewModel: MediaListViewModelInput, MediaListViewModelOutpu
 		let _items = BehaviorSubject<[MediaCellModel]>(value: [])
 		self.items = _items.asObservable()
 		
+		let _present = PublishSubject<UIViewController>()
+		self.present = _present.asObservable()
+		
 		_deleteButtonTapped
 			.mapTo([])
 			.bind(to: _items)
 			.disposed(by: disposeBag)
 		
 		_cameraButtonTapped
-			.mapTo([MediaCellModel()]) // TODO
+			.map { UIImagePickerController() }
+			.do(onNext: _present.onNext)
+			.flatMap { $0.rx.didFinishPickingMediaWithInfo }
+			.compactMap { $0[.phAsset] as? PHAsset }
+			.flatMap { $0.cellModel }
+			.map { [$0] }
 			.withLatestFrom(_items, resultSelector: +)
 			.bind(to: _items)
 			.disposed(by: disposeBag)
 		
 		_photoButtonTapped
-			.mapTo([MediaCellModel()]) // TODO
+			.map { UIImagePickerController() }
+			.do(onNext: _present.onNext)
+			.flatMap { $0.rx.didFinishPickingMediaWithInfo }
+			.compactMap { $0[.phAsset] as? PHAsset }
+			.flatMap { $0.cellModel }
+			.map { [$0] }
 			.withLatestFrom(_items, resultSelector: +)
 			.bind(to: _items)
 			.disposed(by: disposeBag)
 		
-		_fileButtonTapped
-			.mapTo([MediaCellModel()]) // TODO
-			.withLatestFrom(_items, resultSelector: +)
-			.bind(to: _items)
-			.disposed(by: disposeBag)
+//		_fileButtonTapped
+//			.mapTo([MediaCellModel()])
+//			.withLatestFrom(_items, resultSelector: +)
+//			.bind(to: _items)
+//			.disposed(by: disposeBag)
+	}
+}
+
+import Photos
+
+fileprivate extension PHAsset {
+	
+	var cellModel: Observable<MediaCellModel> {
+		return .create { observer -> Disposable in
+			let disposable = CompositeDisposable()
+			
+			guard self.mediaType == .image else {
+				observer.onCompleted()
+				return disposable
+			}
+			
+			PHImageManager.default().requestImage(for: self, targetSize: .init(width: self.pixelWidth, height: self.pixelHeight), contentMode: .aspectFit, options: nil) { image, info in
+				defer { observer.onCompleted() }
+				let url = info?["PHImageFileURLKey"] as? URL
+				guard let name = url?.deletingPathExtension().lastPathComponent, let image = image else { return }
+				observer.onNext(.init(title: name, image: image))
+			}
+			return disposable
+		}
 	}
 }

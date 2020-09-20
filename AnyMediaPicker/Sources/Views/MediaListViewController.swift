@@ -51,6 +51,7 @@ class MediaListViewController: UIViewController, StoryboardInstantiatable {
 			tableView.rx.itemSelected ~> input.itemSelected
 		
 		disposeBag ~
-			output.items ~> tableView.rx.reloadCells(MediaCellView.self)
+			output.items ~> tableView.rx.reloadCells(MediaCellView.self) ~
+			output.present ~> rx.present
 	}
 }

@@ -10,6 +10,8 @@
 		27D42A7522EFE45443A08182 /* Pods_AnyMediaPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA94714E4497189D0C39EB1D /* Pods_AnyMediaPicker.framework */; };
 		B3AD9A6C2517A662008926BB /* UITableView+RxCellsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AD9A6B2517A662008926BB /* UITableView+RxCellsDataSource.swift */; };
 		B3AD9A6E2517B304008926BB /* UICollectionView+RxCellsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AD9A6D2517B304008926BB /* UICollectionView+RxCellsDataSource.swift */; };
+		B3AD9A702517B3D7008926BB /* UIImagePickerController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AD9A6F2517B3D7008926BB /* UIImagePickerController+Rx.swift */; };
+		B3AD9A722517C210008926BB /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AD9A712517C210008926BB /* UIViewController+Rx.swift */; };
 		B3F0DC492511068A00007868 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F0DC482511068A00007868 /* AppDelegate.swift */; };
 		B3F0DC4D2511068A00007868 /* MediaListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F0DC4C2511068A00007868 /* MediaListViewController.swift */; };
 		B3F0DC502511068A00007868 /* MediaListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3F0DC4E2511068A00007868 /* MediaListViewController.storyboard */; };
@@ -27,6 +29,8 @@
 		7D5CE38843FF39DD7AEAEA87 /* Pods-AnyMediaPicker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnyMediaPicker.debug.xcconfig"; path = "Target Support Files/Pods-AnyMediaPicker/Pods-AnyMediaPicker.debug.xcconfig"; sourceTree = "<group>"; };
 		B3AD9A6B2517A662008926BB /* UITableView+RxCellsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+RxCellsDataSource.swift"; sourceTree = "<group>"; };
 		B3AD9A6D2517B304008926BB /* UICollectionView+RxCellsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+RxCellsDataSource.swift"; sourceTree = "<group>"; };
+		B3AD9A6F2517B3D7008926BB /* UIImagePickerController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImagePickerController+Rx.swift"; sourceTree = "<group>"; };
+		B3AD9A712517C210008926BB /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
 		B3F0DC452511068900007868 /* AnyMediaPicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnyMediaPicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3F0DC482511068A00007868 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3F0DC4C2511068A00007868 /* MediaListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaListViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +82,8 @@
 			children = (
 				B3AD9A6B2517A662008926BB /* UITableView+RxCellsDataSource.swift */,
 				B3AD9A6D2517B304008926BB /* UICollectionView+RxCellsDataSource.swift */,
+				B3AD9A6F2517B3D7008926BB /* UIImagePickerController+Rx.swift */,
+				B3AD9A712517C210008926BB /* UIViewController+Rx.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -300,6 +306,8 @@
 				B3F0DC492511068A00007868 /* AppDelegate.swift in Sources */,
 				B3F0DC86251113D400007868 /* MediaCellViewModel.swift in Sources */,
 				B3F0DC80251109F300007868 /* MediaListModel.swift in Sources */,
+				B3AD9A702517B3D7008926BB /* UIImagePickerController+Rx.swift in Sources */,
+				B3AD9A722517C210008926BB /* UIViewController+Rx.swift in Sources */,
 				B3F0DC8225110A1D00007868 /* MediaListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
