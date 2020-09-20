@@ -28,4 +28,3 @@ public extension Reactive where Base: UITableView {
 		}
 	}
 }
-
