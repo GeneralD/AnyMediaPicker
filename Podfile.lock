@@ -1,4 +1,5 @@
 PODS:
+  - Differentiator (4.0.1)
   - Instantiate (4.0.0)
   - InstantiateStandard (4.0.0):
     - Instantiate (~> 4.0)
@@ -17,6 +18,10 @@ PODS:
   - RxCocoa (5.1.1):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
+  - RxDataSources (4.0.1):
+    - Differentiator (~> 4.0)
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
   - RxOptional (4.1.0):
     - RxCocoa (~> 5)
     - RxSwift (~> 5)
@@ -37,35 +42,40 @@ DEPENDENCIES:
   - RxBinding
   - RxCells
   - RxCocoa
+  - RxDataSources
   - RxOptional
   - RxSwift
   - RxSwiftExt
 
 SPEC REPOS:
   trunk:
+    - Differentiator
     - Instantiate
     - InstantiateStandard
     - Reusable
     - RxBinding
     - RxCells
     - RxCocoa
+    - RxDataSources
     - RxOptional
     - RxRelay
     - RxSwift
     - RxSwiftExt
 
 SPEC CHECKSUMS:
+  Differentiator: 886080237d9f87f322641dedbc5be257061b0602
   Instantiate: 62516e7dde448721c1f5815a9ee7e0669d034d52
   InstantiateStandard: 18ab1417ba787113350c71a5b2251f0b4448be67
   Reusable: 53a9acf5c536f229b31b5865782414b508252ddb
   RxBinding: da433c012633802a72c2a5bec8775b86f4cddeb8
   RxCells: bdf6673a05f8ee58b3dd7b28c3e236da7b5e0e98
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
   RxOptional: b1fcd60856807a564c0215c2184b8d33e7826dc2
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   RxSwiftExt: 4ca80336f43c28f11a2825cdd2fc61dd6c044697
 
-PODFILE CHECKSUM: 7d5e4cd06043e9299406b6d07f2c9bd556a783fa
+PODFILE CHECKSUM: b10f59b230b3a8cd0682336ed8d1d213e3ef35b8
 
 COCOAPODS: 1.9.1

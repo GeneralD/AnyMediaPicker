@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		27D42A7522EFE45443A08182 /* Pods_AnyMediaPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA94714E4497189D0C39EB1D /* Pods_AnyMediaPicker.framework */; };
+		B3AD9A6C2517A662008926BB /* UITableView+RxCellsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AD9A6B2517A662008926BB /* UITableView+RxCellsDataSource.swift */; };
 		B3F0DC492511068A00007868 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F0DC482511068A00007868 /* AppDelegate.swift */; };
 		B3F0DC4D2511068A00007868 /* MediaListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F0DC4C2511068A00007868 /* MediaListViewController.swift */; };
 		B3F0DC502511068A00007868 /* MediaListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3F0DC4E2511068A00007868 /* MediaListViewController.storyboard */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		7D5CE38843FF39DD7AEAEA87 /* Pods-AnyMediaPicker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnyMediaPicker.debug.xcconfig"; path = "Target Support Files/Pods-AnyMediaPicker/Pods-AnyMediaPicker.debug.xcconfig"; sourceTree = "<group>"; };
+		B3AD9A6B2517A662008926BB /* UITableView+RxCellsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+RxCellsDataSource.swift"; sourceTree = "<group>"; };
 		B3F0DC452511068900007868 /* AnyMediaPicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnyMediaPicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3F0DC482511068A00007868 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3F0DC4C2511068A00007868 /* MediaListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaListViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +71,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B3AD9A6A2517A5FB008926BB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B3AD9A6B2517A662008926BB /* UITableView+RxCellsDataSource.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		B3F0DC3C2511068900007868 = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +115,7 @@
 				B3F0DC7A251106DB00007868 /* Models */,
 				B3F0DC7C251106E700007868 /* ViewModels */,
 				B3F0DC7B251106E300007868 /* Views */,
+				B3AD9A6A2517A5FB008926BB /* Extensions */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -280,6 +291,7 @@
 			files = (
 				B3F0DC84251113B100007868 /* MediaCellModel.swift in Sources */,
 				B3F0DC4D2511068A00007868 /* MediaListViewController.swift in Sources */,
+				B3AD9A6C2517A662008926BB /* UITableView+RxCellsDataSource.swift in Sources */,
 				B3F0DC88251113DF00007868 /* MediaCellView.swift in Sources */,
 				B3F0DC492511068A00007868 /* AppDelegate.swift in Sources */,
 				B3F0DC86251113D400007868 /* MediaCellViewModel.swift in Sources */,

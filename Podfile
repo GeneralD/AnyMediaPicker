@@ -9,6 +9,7 @@ target 'AnyMediaPicker' do
 	pod 'RxBinding'
 	pod 'RxSwiftExt'
 	pod 'RxCells'
+	pod 'RxDataSources'
 	
 	pod 'InstantiateStandard'
 	

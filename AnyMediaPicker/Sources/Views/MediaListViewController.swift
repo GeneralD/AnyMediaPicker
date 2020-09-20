@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 import RxBinding
 import RxCells
+import RxDataSources
 import Instantiate
 import InstantiateStandard
 
@@ -50,6 +51,6 @@ class MediaListViewController: UIViewController, StoryboardInstantiatable {
 			tableView.rx.itemSelected ~> input.itemSelected
 		
 		disposeBag ~
-			output.items ~> tableView.rx.cells(MediaCellView.self)
+			output.items ~> tableView.rx.reloadCells(MediaCellView.self)
 	}
 }
