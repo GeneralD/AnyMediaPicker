@@ -9,10 +9,12 @@
 import Foundation
 import Photos
 import RxSwift
+import RxCocoa
 import RxRelay
 import RxSwiftExt
-import Permission
+import RxDocumentPicker
 import RxPermission
+import Permission
 import SwiftPrelude
 
 protocol MediaListViewModelInput {
@@ -20,7 +22,8 @@ protocol MediaListViewModelInput {
 	var cameraButtonTapped: AnyObserver<()> { get }
 	var photoButtonTapped: AnyObserver<()> { get }
 	var fileButtonTapped: AnyObserver<()> { get }
-	var itemSelected: AnyObserver<IndexPath> { get }
+	var itemMoved: AnyObserver<ItemMovedEvent> { get }
+	var itemDeleted: AnyObserver<IndexPath> { get }
 }
 
 protocol MediaListViewModelOutput {
@@ -35,7 +38,8 @@ final class MediaListViewModel: MediaListViewModelInput, MediaListViewModelOutpu
 	let cameraButtonTapped: AnyObserver<()>
 	let photoButtonTapped: AnyObserver<()>
 	let fileButtonTapped: AnyObserver<()>
-	let itemSelected: AnyObserver<IndexPath>
+	let itemMoved: AnyObserver<ItemMovedEvent>
+	let itemDeleted: AnyObserver<IndexPath>
 	
 	// MARK: Outputs
 	let items: Observable<[MediaCellModel]>
@@ -56,8 +60,11 @@ final class MediaListViewModel: MediaListViewModelInput, MediaListViewModelOutpu
 		let _fileButtonTapped = PublishSubject<()>()
 		self.fileButtonTapped = _fileButtonTapped.asObserver()
 		
-		let _itemSelected = PublishSubject<IndexPath>()
-		self.itemSelected = _itemSelected.asObserver()
+		let _itemMoved = PublishSubject<ItemMovedEvent>()
+		self.itemMoved = _itemMoved.asObserver()
+		
+		let _itemDeleted = PublishSubject<IndexPath>()
+		self.itemDeleted = _itemDeleted.asObserver()
 		
 		let _items = BehaviorSubject<[MediaCellModel]>(value: [])
 		self.items = _items.asObservable()
@@ -100,11 +107,43 @@ final class MediaListViewModel: MediaListViewModelInput, MediaListViewModelOutpu
 			.bind(to: addItem)
 			.disposed(by: disposeBag)
 		
-		//		_fileButtonTapped
-		//			.mapTo([MediaCellModel()])
-		//			.withLatestFrom(_items, resultSelector: +)
-		//			.bind(to: _items)
-		//			.disposed(by: disposeBag)
+		_fileButtonTapped
+			.mapTo(defer: UIDocumentPickerViewController(documentTypes: ["public.image"], in: .import))
+			.do(onNext: _present.onNext)
+			.flatMapAt(\.rx.didPickDocumentsAt)
+			.compactMapAt(\.first)
+			.filterMap({ url in
+				let data = try Data(contentsOf: url)
+				guard let image = UIImage(data: data) else { return .ignore }
+				let title = url.deletingPathExtension().lastPathComponent
+				return .map(MediaCellModel(title: title, image: image))
+			})
+			.bind(to: addItem)
+			.disposed(by: disposeBag)
+		
+		_itemDeleted
+			.withLatestFrom(_items) { $1.removing(at: $0.row) }
+			.bind(to: _items)
+			.disposed(by: disposeBag)
+		
+		_itemMoved
+			.withLatestFrom(_items) { $1.swapping(at: $0.sourceIndex.row, $0.destinationIndex.row) }
+			.bind(to: _items)
+			.disposed(by: disposeBag)
 	}
 }
 
+extension Array {
+	
+	func removing(at index: Int) -> [Element] {
+		var a = self
+		a.remove(at: index)
+		return a
+	}
+	
+	func swapping(at i: Int, _ j: Int) -> [Element] {
+		var a = self
+		a.swapAt(i, j)
+		return a
+	}
+}

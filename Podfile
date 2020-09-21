@@ -10,6 +10,7 @@ target 'AnyMediaPicker' do
 	pod 'RxSwiftExt'
 	pod 'RxCells'
 	pod 'RxDataSources'
+	pod 'RxDocumentPicker'
 	pod 'RxPermission/Camera'
 	pod 'RxPermission/Photos'
 	

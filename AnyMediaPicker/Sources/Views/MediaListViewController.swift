@@ -42,13 +42,15 @@ class MediaListViewController: UIViewController, StoryboardInstantiatable {
 		tableView.delegate = nil
 		tableView.dataSource = nil
 		tableView.register(cellType: MediaCellView.self)
+		tableView.isEditing = true
 		
 		disposeBag ~
 			deleteButton.rx.tap ~> input.deleteButtonTapped ~
 			cameraButton.rx.tap ~> input.cameraButtonTapped ~
 			photoButton.rx.tap ~> input.photoButtonTapped ~
 			fileButton.rx.tap ~> input.fileButtonTapped ~
-			tableView.rx.itemSelected ~> input.itemSelected
+			tableView.rx.itemMoved ~> input.itemMoved ~
+			tableView.rx.itemDeleted ~> input.itemDeleted
 		
 		disposeBag ~
 			output.items ~> tableView.rx.reloadCells(MediaCellView.self) ~

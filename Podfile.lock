@@ -27,6 +27,9 @@ PODS:
     - Differentiator (~> 4.0)
     - RxCocoa (~> 5.0)
     - RxSwift (~> 5.0)
+  - RxDocumentPicker (0.2.0):
+    - RxCocoa
+    - RxSwift
   - RxOptional (4.1.0):
     - RxCocoa (~> 5)
     - RxSwift (~> 5)
@@ -58,6 +61,7 @@ DEPENDENCIES:
   - RxCells
   - RxCocoa
   - RxDataSources
+  - RxDocumentPicker
   - RxOptional
   - RxPermission/Camera
   - RxPermission/Photos
@@ -76,6 +80,7 @@ SPEC REPOS:
     - RxCells
     - RxCocoa
     - RxDataSources
+    - RxDocumentPicker
     - RxOptional
     - RxPermission
     - RxRelay
@@ -93,6 +98,7 @@ SPEC CHECKSUMS:
   RxCells: bdf6673a05f8ee58b3dd7b28c3e236da7b5e0e98
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
+  RxDocumentPicker: f3dc33b7b9b3e016e73c503800f15f6df151c66f
   RxOptional: b1fcd60856807a564c0215c2184b8d33e7826dc2
   RxPermission: acca72f2f9b75cfb5c90e34030ab774f4088bccb
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
@@ -100,6 +106,6 @@ SPEC CHECKSUMS:
   RxSwiftExt: 4ca80336f43c28f11a2825cdd2fc61dd6c044697
   SwiftPrelude: 60d747dc5e225296fd9a304e0aa877c8d0e30d89
 
-PODFILE CHECKSUM: c7f0a79903cab3cd721cef1e4550eeeba921378c
+PODFILE CHECKSUM: fe49a87ec6d67b62aead8ad2c36e144019c1de56
 
 COCOAPODS: 1.9.1
