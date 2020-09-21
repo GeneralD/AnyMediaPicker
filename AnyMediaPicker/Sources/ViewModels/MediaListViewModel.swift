@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Photos
 import RxSwift
 import RxRelay
 import RxSwiftExt
@@ -71,7 +72,7 @@ final class MediaListViewModel: MediaListViewModelInput, MediaListViewModelOutpu
 			.do(onNext: _present.onNext)
 			.flatMap { $0.rx.didFinishPickingMediaWithInfo }
 			.compactMap { $0[.phAsset] as? PHAsset }
-			.flatMap { $0.cellModel }
+			.flatMap { $0.rx.cellModel }
 			.map { [$0] }
 			.withLatestFrom(_items, resultSelector: +)
 			.bind(to: _items)
@@ -82,40 +83,16 @@ final class MediaListViewModel: MediaListViewModelInput, MediaListViewModelOutpu
 			.do(onNext: _present.onNext)
 			.flatMap { $0.rx.didFinishPickingMediaWithInfo }
 			.compactMap { $0[.phAsset] as? PHAsset }
-			.flatMap { $0.cellModel }
+			.flatMap { $0.rx.cellModel }
 			.map { [$0] }
 			.withLatestFrom(_items, resultSelector: +)
 			.bind(to: _items)
 			.disposed(by: disposeBag)
 		
-//		_fileButtonTapped
-//			.mapTo([MediaCellModel()])
-//			.withLatestFrom(_items, resultSelector: +)
-//			.bind(to: _items)
-//			.disposed(by: disposeBag)
-	}
-}
-
-import Photos
-
-fileprivate extension PHAsset {
-	
-	var cellModel: Observable<MediaCellModel> {
-		return .create { observer -> Disposable in
-			let disposable = CompositeDisposable()
-			
-			guard self.mediaType == .image else {
-				observer.onCompleted()
-				return disposable
-			}
-			
-			PHImageManager.default().requestImage(for: self, targetSize: .init(width: self.pixelWidth, height: self.pixelHeight), contentMode: .aspectFit, options: nil) { image, info in
-				defer { observer.onCompleted() }
-				let url = info?["PHImageFileURLKey"] as? URL
-				guard let name = url?.deletingPathExtension().lastPathComponent, let image = image else { return }
-				observer.onNext(.init(title: name, image: image))
-			}
-			return disposable
-		}
+		//		_fileButtonTapped
+		//			.mapTo([MediaCellModel()])
+		//			.withLatestFrom(_items, resultSelector: +)
+		//			.bind(to: _items)
+		//			.disposed(by: disposeBag)
 	}
 }

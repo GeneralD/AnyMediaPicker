@@ -1,5 +1,5 @@
 //
-//  UICollectionView+RxCellsDataSource.swift
+//  UICollectionView+Rx.swift
 //  AnyMediaPicker
 //
 //  Created by Yumenosuke Koukata on 2020/09/21.
