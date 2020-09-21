@@ -107,3 +107,4 @@ final class MediaListViewModel: MediaListViewModelInput, MediaListViewModelOutpu
 		//			.disposed(by: disposeBag)
 	}
 }
+

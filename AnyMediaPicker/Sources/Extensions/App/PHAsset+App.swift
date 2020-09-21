@@ -8,6 +8,7 @@
 
 import Photos
 import RxSwift
+import SwiftPrelude
 
 extension Reactive where Base: PHAsset {
 	
@@ -15,17 +16,29 @@ extension Reactive where Base: PHAsset {
 		return .create { [weak base] observer -> Disposable in
 			let disposable = CompositeDisposable()
 			
-			guard let b = base, b.mediaType == .image else {
+			guard let asset = base, asset.mediaType == .image else {
 				observer.onCompleted()
 				return disposable
 			}
 			
-			PHImageManager.default().requestImage(for: b, targetSize: .init(width: b.pixelWidth, height: b.pixelHeight), contentMode: .aspectFit, options: nil) { image, info in
+			let options: PHImageRequestOptions = PHImageRequestOptions()
+				|> \.deliveryMode … .highQualityFormat
+				|> \.isNetworkAccessAllowed … true
+				|> \.isSynchronous … false
+				|> \.version … .current
+				|> \.deliveryMode … .opportunistic
+				|> \.resizeMode … .fast
+				|> \.progressHandler … { _, _, _, _ in print("Loading image from iCloud") }
+			
+			let size = CGSize(width: asset.pixelWidth, height: asset.pixelHeight)
+			
+			PHImageManager.default().requestImage(for: asset, targetSize: size, contentMode: .aspectFit, options: options) { image, info in
 				defer { observer.onCompleted() }
 				let url = info?["PHImageFileURLKey"] as? URL
 				guard let name = url?.deletingPathExtension().lastPathComponent, let image = image else { return }
 				observer.onNext(.init(title: name, image: image))
 			}
+			
 			return disposable
 		}
 	}
