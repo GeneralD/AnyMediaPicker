@@ -16,22 +16,29 @@ extension Reactive where Base: UIImagePickerController {
 	Reactive wrapper for `delegate` message.
 	*/
 	public var didFinishPickingMediaWithInfo: Observable<[UIImagePickerController.InfoKey : Any]> {
+		setupRxImagePicker()
 		return delegate
 			.methodInvoked(#selector(UIImagePickerControllerDelegate.imagePickerController(_:didFinishPickingMediaWithInfo:)))
-			.map {
+			.map({
 				try castOrThrow([UIImagePickerController.InfoKey : Any].self, $0[1])
-		}
+			})
+			.do(onNext: { [weak base] _ in
+				base?.dismiss(animated: true)
+			})
 	}
 	
 	/**
 	Reactive wrapper for `delegate` message.
 	*/
 	public var didCancel: Observable<()> {
+		setupRxImagePicker()
 		return delegate
 			.methodInvoked(#selector(UIImagePickerControllerDelegate.imagePickerControllerDidCancel(_:)))
 			.map {_ in () }
+			.do(onNext: { [weak base] _ in
+				base?.dismiss(animated: true)
+			})
 	}
-	
 }
 
 fileprivate func castOrThrow<T>(_ resultType: T.Type, _ object: Any) throws -> T {
@@ -48,6 +55,9 @@ public class RxImagePickerDelegateProxy: RxNavigationControllerDelegateProxy, UI
 	}
 }
 
-private let setupRxImagePicker: () = {
+private var didOnce = false
+private func setupRxImagePicker() {
+	guard !didOnce else { return }
+	didOnce = true
 	RxImagePickerDelegateProxy.register(make: RxImagePickerDelegateProxy.init(imagePicker: ))
-} ()
+}
