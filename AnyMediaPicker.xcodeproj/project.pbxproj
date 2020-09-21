@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		27D42A7522EFE45443A08182 /* Pods_AnyMediaPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA94714E4497189D0C39EB1D /* Pods_AnyMediaPicker.framework */; };
+		B31D26D52518B2AF006E9D93 /* ObservableTypeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31D26D42518B2AF006E9D93 /* ObservableTypeExtension.swift */; };
 		B3AD9A6C2517A662008926BB /* UITableView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AD9A6B2517A662008926BB /* UITableView+Rx.swift */; };
 		B3AD9A6E2517B304008926BB /* UICollectionView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AD9A6D2517B304008926BB /* UICollectionView+Rx.swift */; };
 		B3AD9A702517B3D7008926BB /* UIImagePickerController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AD9A6F2517B3D7008926BB /* UIImagePickerController+Rx.swift */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		7D5CE38843FF39DD7AEAEA87 /* Pods-AnyMediaPicker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnyMediaPicker.debug.xcconfig"; path = "Target Support Files/Pods-AnyMediaPicker/Pods-AnyMediaPicker.debug.xcconfig"; sourceTree = "<group>"; };
+		B31D26D42518B2AF006E9D93 /* ObservableTypeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableTypeExtension.swift; sourceTree = "<group>"; };
 		B3AD9A6B2517A662008926BB /* UITableView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Rx.swift"; sourceTree = "<group>"; };
 		B3AD9A6D2517B304008926BB /* UICollectionView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Rx.swift"; sourceTree = "<group>"; };
 		B3AD9A6F2517B3D7008926BB /* UIImagePickerController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImagePickerController+Rx.swift"; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				B3AD9A6D2517B304008926BB /* UICollectionView+Rx.swift */,
 				B3AD9A712517C210008926BB /* UIViewController+Rx.swift */,
 				B3AD9A6F2517B3D7008926BB /* UIImagePickerController+Rx.swift */,
+				B31D26D42518B2AF006E9D93 /* ObservableTypeExtension.swift */,
 			);
 			path = Rx;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				B3AD9A6E2517B304008926BB /* UICollectionView+Rx.swift in Sources */,
 				B3F0DC84251113B100007868 /* MediaCellModel.swift in Sources */,
 				B3F0DC4D2511068A00007868 /* MediaListViewController.swift in Sources */,
+				B31D26D52518B2AF006E9D93 /* ObservableTypeExtension.swift in Sources */,
 				B3AD9A6C2517A662008926BB /* UITableView+Rx.swift in Sources */,
 				B3F0DC88251113DF00007868 /* MediaCellView.swift in Sources */,
 				B3F0DC492511068A00007868 /* AppDelegate.swift in Sources */,

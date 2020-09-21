@@ -11,6 +11,9 @@ import Photos
 import RxSwift
 import RxRelay
 import RxSwiftExt
+import Permission
+import RxPermission
+import SwiftPrelude
 
 protocol MediaListViewModelInput {
 	var deleteButtonTapped: AnyObserver<()> { get }
@@ -67,26 +70,34 @@ final class MediaListViewModel: MediaListViewModelInput, MediaListViewModelOutpu
 			.bind(to: _items)
 			.disposed(by: disposeBag)
 		
-		_cameraButtonTapped
-			.map { UIImagePickerController() }
-			.do(onNext: _present.onNext)
-			.flatMap { $0.rx.didFinishPickingMediaWithInfo }
-			.compactMap { $0[.phAsset] as? PHAsset }
-			.flatMap { $0.rx.cellModel }
-			.map { [$0] }
+		let addItem = PublishRelay<MediaCellModel>()
+		addItem.map { [$0] }
 			.withLatestFrom(_items, resultSelector: +)
 			.bind(to: _items)
 			.disposed(by: disposeBag)
 		
-		_photoButtonTapped
-			.map { UIImagePickerController() }
+		_cameraButtonTapped
+			.flatMapTo(defer: Permission.camera.rx.permission)
+			.filter(.authorized)
+			.mapTo(defer: UIImagePickerController() |> \.sourceType … .camera)
 			.do(onNext: _present.onNext)
-			.flatMap { $0.rx.didFinishPickingMediaWithInfo }
-			.compactMap { $0[.phAsset] as? PHAsset }
-			.flatMap { $0.rx.cellModel }
-			.map { [$0] }
-			.withLatestFrom(_items, resultSelector: +)
-			.bind(to: _items)
+			.flatMapAt(\.rx.didFinishPickingMediaWithInfo)
+			.mapAt(\.[.phAsset])
+			.ofType(PHAsset.self)
+			.flatMapAt(\.rx.cellModel)
+			.bind(to: addItem)
+			.disposed(by: disposeBag)
+		
+		_photoButtonTapped
+			.flatMapTo(defer: Permission.photos.rx.permission)
+			.filter(.authorized)
+			.mapTo(defer: UIImagePickerController() |> \.sourceType … .photoLibrary)
+			.do(onNext: _present.onNext)
+			.flatMapAt(\.rx.didFinishPickingMediaWithInfo)
+			.mapAt(\.[.phAsset])
+			.ofType(PHAsset.self)
+			.flatMapAt(\.rx.cellModel)
+			.bind(to: addItem)
 			.disposed(by: disposeBag)
 		
 		//		_fileButtonTapped
