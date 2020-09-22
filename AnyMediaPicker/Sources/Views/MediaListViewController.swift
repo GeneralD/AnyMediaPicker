@@ -39,9 +39,8 @@ class MediaListViewController: UIViewController, StoryboardInstantiatable {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		tableView.delegate = nil
-		tableView.dataSource = nil
-		tableView.register(cellType: MediaCellView.self)
+		let cellType = MediaCellView.self
+		tableView.register(cellType: cellType)
 		tableView.isEditing = true
 		
 		disposeBag ~
@@ -53,7 +52,7 @@ class MediaListViewController: UIViewController, StoryboardInstantiatable {
 			tableView.rx.itemDeleted ~> input.itemDeleted
 		
 		disposeBag ~
-			output.items ~> tableView.rx.animatedCells(MediaCellView.self, canEdit: true, canMove: true) ~
+			output.items ~> tableView.rx.animatedCells(cellType, canEdit: true, canMove: true) ~
 			output.present ~> rx.present
 	}
 }
