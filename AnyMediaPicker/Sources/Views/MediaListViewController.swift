@@ -53,7 +53,7 @@ class MediaListViewController: UIViewController, StoryboardInstantiatable {
 			tableView.rx.itemDeleted ~> input.itemDeleted
 		
 		disposeBag ~
-			output.items ~> tableView.rx.reloadCells(MediaCellView.self) ~
+			output.items ~> tableView.rx.reloadCells(MediaCellView.self, canEdit: true, canMove: true) ~
 			output.present ~> rx.present
 	}
 }

@@ -14,16 +14,21 @@ import Reusable
 
 public extension Reactive where Base: UITableView {
 	
-	func reloadCells<S: Sequence, Cell: UITableViewCell, O: ObservableType>(_: Cell.Type) -> (_ _: O) -> Disposable where O.Element == S, Cell: Reusable & Configurable, Cell.Model == S.Iterator.Element {
+	func reloadCells<S: Sequence, Cell: UITableViewCell, O: ObservableType>(_: Cell.Type, canEdit: Bool = false, canMove: Bool = false) -> (_ _: O) -> Disposable where O.Element == S, Cell: Reusable & Configurable, Cell.Model == S.Iterator.Element {
 	{ source in
 		source
 			.map(Array.init) // sequence to array
 			.map { SectionModel<(), Cell.Model>(model: (), items: $0) } // cell models to a section model
 			.map { [$0] } // as single section array
-			.bind(to: self.items(dataSource: RxTableViewSectionedReloadDataSource<SectionModel<(), Cell.Model>>(configureCell: { _, tableView, indexPath, item in
-				let cell = tableView.dequeueReusableCell(withIdentifier: Cell.reuseIdentifier, for: indexPath) as! Cell
-				cell.configure(with: item)
-				return cell
+			.bind(to: self.items(dataSource: RxTableViewSectionedReloadDataSource<SectionModel<(), Cell.Model>>(
+				configureCell: { _, tableView, indexPath, item in
+					let cell = tableView.dequeueReusableCell(withIdentifier: Cell.reuseIdentifier, for: indexPath) as! Cell
+					cell.configure(with: item)
+					return cell
+			}, canEditRowAtIndexPath: {
+				_, _ in canEdit
+			}, canMoveRowAtIndexPath:  {
+				_, _ in canMove
 			})))
 		}
 	}
