@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct MediaCellModel {
+struct MediaCellModel: Hashable {
 	let title: String
 	let image: UIImage
 }

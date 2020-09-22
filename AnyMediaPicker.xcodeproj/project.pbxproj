@@ -81,6 +81,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B375675F251A3F09006FEF58 /* RxCells x RxDataSources */ = {
+			isa = PBXGroup;
+			children = (
+				B3AD9A6B2517A662008926BB /* UITableView+Rx.swift */,
+				B3AD9A6D2517B304008926BB /* UICollectionView+Rx.swift */,
+			);
+			path = "RxCells x RxDataSources";
+			sourceTree = "<group>";
+		};
 		B3AD9A6A2517A5FB008926BB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -93,8 +102,7 @@
 		B3AD9A73251841E7008926BB /* Rx */ = {
 			isa = PBXGroup;
 			children = (
-				B3AD9A6B2517A662008926BB /* UITableView+Rx.swift */,
-				B3AD9A6D2517B304008926BB /* UICollectionView+Rx.swift */,
+				B375675F251A3F09006FEF58 /* RxCells x RxDataSources */,
 				B3AD9A712517C210008926BB /* UIViewController+Rx.swift */,
 				B3AD9A6F2517B3D7008926BB /* UIImagePickerController+Rx.swift */,
 				B31D26D42518B2AF006E9D93 /* ObservableTypeExtension.swift */,
