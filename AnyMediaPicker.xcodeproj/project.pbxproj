@@ -15,6 +15,7 @@
 		B3AD9A722517C210008926BB /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AD9A712517C210008926BB /* UIViewController+Rx.swift */; };
 		B3AD9A752518421C008926BB /* PHAsset+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AD9A742518421C008926BB /* PHAsset+App.swift */; };
 		B3ADC415251B872B00EFE63B /* UIBarButtonItem+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ADC414251B872B00EFE63B /* UIBarButtonItem+Rx.swift */; };
+		B3ADC418251B8F9100EFE63B /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ADC417251B8F9100EFE63B /* ArrayExtension.swift */; };
 		B3F0DC492511068A00007868 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F0DC482511068A00007868 /* AppDelegate.swift */; };
 		B3F0DC4D2511068A00007868 /* MediaListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F0DC4C2511068A00007868 /* MediaListViewController.swift */; };
 		B3F0DC502511068A00007868 /* MediaListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3F0DC4E2511068A00007868 /* MediaListViewController.storyboard */; };
@@ -37,6 +38,7 @@
 		B3AD9A712517C210008926BB /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
 		B3AD9A742518421C008926BB /* PHAsset+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PHAsset+App.swift"; sourceTree = "<group>"; };
 		B3ADC414251B872B00EFE63B /* UIBarButtonItem+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Rx.swift"; sourceTree = "<group>"; };
+		B3ADC417251B8F9100EFE63B /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		B3F0DC452511068900007868 /* AnyMediaPicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnyMediaPicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3F0DC482511068A00007868 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3F0DC4C2511068A00007868 /* MediaListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaListViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 			children = (
 				B3AD9A76251844D8008926BB /* App */,
 				B3AD9A73251841E7008926BB /* Rx */,
+				B3ADC417251B8F9100EFE63B /* ArrayExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3ADC418251B8F9100EFE63B /* ArrayExtension.swift in Sources */,
 				B3AD9A752518421C008926BB /* PHAsset+App.swift in Sources */,
 				B3AD9A6E2517B304008926BB /* UICollectionView+Rx.swift in Sources */,
 				B3F0DC84251113B100007868 /* MediaCellModel.swift in Sources */,

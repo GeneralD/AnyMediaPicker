@@ -93,7 +93,8 @@ final class MediaListViewModel: MediaListViewModelInput, MediaListViewModelOutpu
 			.disposed(by: disposeBag)
 		
 		let addItem = PublishRelay<MediaCellModel>()
-		addItem.map { [$0] }
+		addItem
+			.map(Array.init(just: ))
 			.withLatestFrom(_items, resultSelector: +)
 			.bind(to: _items)
 			.disposed(by: disposeBag)
@@ -126,13 +127,7 @@ final class MediaListViewModel: MediaListViewModelInput, MediaListViewModelOutpu
 			.mapTo(defer: UIDocumentPickerViewController(documentTypes: ["public.image"], in: .import))
 			.do(onNext: _present.accept)
 			.flatMapAt(\.rx.didPickDocumentsAt)
-			.compactMapAt(\.first)
-			.filterMap({ url in
-				let data = try Data(contentsOf: url)
-				guard let image = UIImage(data: data) else { return .ignore }
-				let title = url.deletingPathExtension().lastPathComponent
-				return .map(MediaCellModel(title: title, image: image))
-			})
+			.compactMapAt(\.first?.cellModel)
 			.bind(to: addItem)
 			.disposed(by: disposeBag)
 		
@@ -160,17 +155,12 @@ final class MediaListViewModel: MediaListViewModelInput, MediaListViewModelOutpu
 	}
 }
 
-extension Array {
+private extension URL {
 	
-	func removing(at index: Int) -> [Element] {
-		var a = self
-		a.remove(at: index)
-		return a
-	}
-	
-	func swapping(at i: Int, _ j: Int) -> [Element] {
-		var a = self
-		a.swapAt(i, j)
-		return a
+	var cellModel: MediaCellModel? {
+		guard let data = try? Data(contentsOf: self),
+			  let image = UIImage(data: data) else { return nil }
+		let title = deletingPathExtension().lastPathComponent
+		return MediaCellModel(title: title, image: image)
 	}
 }
