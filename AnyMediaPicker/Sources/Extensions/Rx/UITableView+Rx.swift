@@ -8,13 +8,26 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 import RxCells
 import RxDataSources
 import Reusable
 
 public extension Reactive where Base: UITableView {
 	
-	func reloadCells<S: Sequence, Cell: UITableViewCell, O: ObservableType>(_: Cell.Type, canEdit: Bool = false, canMove: Bool = false) -> (_ _: O) -> Disposable where
+	var isEditing: Binder<Bool> {
+		.init(self.base) {
+			$0.isEditing = $1
+		}
+	}
+	
+	func isEditing(animated: Bool) -> Binder<Bool> {
+		.init(self.base) {
+			$0.setEditing($1, animated: animated)
+		}
+	}
+	
+	func reloadCells<S: Sequence, Cell: UITableViewCell, O: ObservableType>(_: Cell.Type, canEdit: Bool = true, canMove: Bool = true) -> (_ _: O) -> Disposable where
 		O.Element == S,
 		Cell: Reusable & Configurable,
 		Cell.Model == S.Iterator.Element {
@@ -36,7 +49,7 @@ public extension Reactive where Base: UITableView {
 		}
 	}
 	
-	func animatedCells<S: Sequence, Cell: UITableViewCell, O: ObservableType>(_: Cell.Type, canEdit: Bool = false, canMove: Bool = false) -> (_ _: O) -> Disposable where
+	func animatedCells<S: Sequence, Cell: UITableViewCell, O: ObservableType>(_: Cell.Type, canEdit: Bool = true, canMove: Bool = true) -> (_ _: O) -> Disposable where
 		O.Element == S,
 		Cell: Reusable & Configurable,
 		Cell.Model == S.Iterator.Element,

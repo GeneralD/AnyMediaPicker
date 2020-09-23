@@ -8,13 +8,21 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 import RxCells
 import RxDataSources
 import Reusable
 
 public extension Reactive where Base: UICollectionView {
 	
-	func reloadCells<S: Sequence, Cell: UICollectionViewCell, O: ObservableType>(_: Cell.Type, canMove: Bool = false) -> (_ _: O) -> Disposable where
+	@available(iOS 14.0, *)
+	var isEditing: Binder<Bool> {
+		.init(self.base) {
+			$0.isEditing = $1
+		}
+	}
+	
+	func reloadCells<S: Sequence, Cell: UICollectionViewCell, O: ObservableType>(_: Cell.Type, canMove: Bool = true) -> (_ _: O) -> Disposable where
 		O.Element == S,
 		Cell: Reusable & Configurable,
 		Cell.Model == S.Iterator.Element {
@@ -34,7 +42,7 @@ public extension Reactive where Base: UICollectionView {
 		}
 	}
 	
-	func animatedCells<S: Sequence, Cell: UICollectionViewCell, O: ObservableType>(_: Cell.Type, canMove: Bool = false) -> (_ _: O) -> Disposable where
+	func animatedCells<S: Sequence, Cell: UICollectionViewCell, O: ObservableType>(_: Cell.Type, canMove: Bool = true) -> (_ _: O) -> Disposable where
 		O.Element == S,
 		Cell: Reusable & Configurable,
 		Cell.Model == S.Iterator.Element,

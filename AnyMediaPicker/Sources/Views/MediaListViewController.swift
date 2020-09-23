@@ -25,6 +25,7 @@ class MediaListViewController: UIViewController, StoryboardInstantiatable {
 	@IBOutlet private weak var cameraButton: UIBarButtonItem!
 	@IBOutlet private weak var photoButton: UIBarButtonItem!
 	@IBOutlet private weak var fileButton: UIBarButtonItem!
+	@IBOutlet private weak var editButton: UIBarButtonItem!
 	
 	private var input: Input!
 	private var output: Output!
@@ -48,11 +49,18 @@ class MediaListViewController: UIViewController, StoryboardInstantiatable {
 			cameraButton.rx.tap ~> input.cameraButtonTapped ~
 			photoButton.rx.tap ~> input.photoButtonTapped ~
 			fileButton.rx.tap ~> input.fileButtonTapped ~
+			editButton.rx.tap ~> input.editButtonTapped ~
 			tableView.rx.itemMoved ~> input.itemMoved ~
 			tableView.rx.itemDeleted ~> input.itemDeleted
 		
 		disposeBag ~
-			output.items ~> tableView.rx.animatedCells(cellType, canEdit: true, canMove: true) ~
+			output.items ~> tableView.rx.animatedCells(cellType) ~
+			output.isTableEditing ~> tableView.rx.isEditing(animated: true) ~
+			output.isTableEditing ~> cameraButton.rx.isEnabled.mapObserver(!) ~
+			output.isTableEditing ~> photoButton.rx.isEnabled.mapObserver(!) ~
+			output.isTableEditing ~> fileButton.rx.isEnabled.mapObserver(!) ~
+			output.isTableEditing ~> deleteButton.rx.isEnabled ~
+			output.editButtonImage ~> editButton.rx.image ~
 			output.present ~> rx.present
 	}
 }

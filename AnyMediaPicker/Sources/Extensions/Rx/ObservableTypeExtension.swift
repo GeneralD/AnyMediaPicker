@@ -19,6 +19,13 @@ public extension ObservableType {
 	}
 }
 
+public extension ObservableType where Element == Bool {
+	
+	func map<Result>(true: @escaping @autoclosure () -> Result, false: @escaping @autoclosure () -> Result) -> Observable<Result> {
+		map { $0 ? `true`() : `false`() }
+	}
+}
+
 // MARK: Map
 
 extension ObservableType {
