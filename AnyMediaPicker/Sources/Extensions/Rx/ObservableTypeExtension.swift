@@ -37,13 +37,6 @@ extension ObservableType {
 
 // MARK: CompactMap
 
-public extension ObservableType {
-	
-	func compactMapAt<Result>(_ keyPath: KeyPath<Element, Result?>) -> Observable<Result> {
-		compactMap { $0[keyPath: keyPath] }
-	}
-}
-
 public extension ObservableType where Element: OptionalType {
 	
 	func compacted() -> Observable<Element.WrappedType> {
@@ -62,10 +55,6 @@ extension Optional: OptionalType {
 // MARK: FlatMap
 
 public extension ObservableType {
-	
-	func flatMapAt<Result>(_ keyPath: KeyPath<Element, Observable<Result>>) -> Observable<Result> {
-		flatMap { $0[keyPath: keyPath] }
-	}
 	
 	func flatMapTo<Result>(_ observable: Observable<Result>) -> Observable<Result> {
 		flatMap { _ in observable }
