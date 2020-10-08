@@ -10,8 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RxBinding
-import RxCells
-import RxDataSources
+import RxDataSourcesToRxCells
 import Instantiate
 import InstantiateStandard
 
@@ -56,9 +55,9 @@ class MediaListViewController: UIViewController, StoryboardInstantiatable {
 		disposeBag ~
 			output.items ~> tableView.rx.animatedCells(cellType) ~
 			output.isTableEditing ~> tableView.rx.isEditing(animated: true) ~
-			output.isTableEditing ~> cameraButton.rx.isEnabled.mapObserver(!) ~
-			output.isTableEditing ~> photoButton.rx.isEnabled.mapObserver(!) ~
-			output.isTableEditing ~> fileButton.rx.isEnabled.mapObserver(!) ~
+			output.areMediaButtonsEnabled ~> cameraButton.rx.isEnabled ~
+			output.areMediaButtonsEnabled ~> photoButton.rx.isEnabled ~
+			output.areMediaButtonsEnabled ~> fileButton.rx.isEnabled ~
 			output.isTableEditing ~> deleteButton.rx.isEnabled ~
 			output.editButtonImage ~> editButton.rx.image ~
 			output.present ~> rx.present

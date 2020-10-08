@@ -32,6 +32,7 @@ protocol MediaListViewModelOutput {
 	var present: Observable<UIViewController> { get }
 	var isTableEditing: Observable<Bool> { get }
 	var editButtonImage: Observable<UIImage> { get }
+	var areMediaButtonsEnabled: Observable<Bool> { get }
 }
 
 final class MediaListViewModel: MediaListViewModelInput, MediaListViewModelOutput {
@@ -50,6 +51,7 @@ final class MediaListViewModel: MediaListViewModelInput, MediaListViewModelOutpu
 	let present: Observable<UIViewController>
 	let isTableEditing: Observable<Bool>
 	let editButtonImage: Observable<UIImage>
+	let areMediaButtonsEnabled: Observable<Bool>
 	
 	private let disposeBag = DisposeBag()
 	
@@ -86,6 +88,9 @@ final class MediaListViewModel: MediaListViewModelInput, MediaListViewModelOutpu
 		
 		let _editButtonImage = PublishRelay<UIImage>()
 		self.editButtonImage = _editButtonImage.asObservable()
+		
+		let _areMediaButtonsEnabled = BehaviorRelay(value: true)
+		self.areMediaButtonsEnabled = _areMediaButtonsEnabled.asObservable()
 		
 		_deleteButtonTapped
 			.mapTo([])
@@ -141,6 +146,11 @@ final class MediaListViewModel: MediaListViewModelInput, MediaListViewModelOutpu
 			.map(true: "pencil.slash", false: "pencil")
 			.compactMap(UIImage.init(systemName: ))
 			.bind(to: _editButtonImage)
+			.disposed(by: disposeBag)
+		
+		_isTableEditing
+			.not()
+			.bind(to: _areMediaButtonsEnabled)
 			.disposed(by: disposeBag)
 		
 		_itemDeleted

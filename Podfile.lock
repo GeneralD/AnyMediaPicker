@@ -27,6 +27,12 @@ PODS:
     - Differentiator (~> 4.0)
     - RxCocoa (~> 5.0)
     - RxSwift (~> 5.0)
+  - RxDataSourcesToRxCells (0.0.1):
+    - Reusable
+    - RxCells
+    - RxCocoa (~> 5)
+    - RxDataSources
+    - RxSwift (~> 5)
   - RxDocumentPicker (0.2.0):
     - RxCocoa
     - RxSwift
@@ -61,6 +67,7 @@ DEPENDENCIES:
   - RxCells
   - RxCocoa
   - RxDataSources
+  - RxDataSourcesToRxCells (from `https://github.com/GeneralD/RxDataSourcesToRxCells`)
   - RxDocumentPicker
   - RxOptional
   - RxPermission/Camera
@@ -88,6 +95,15 @@ SPEC REPOS:
     - RxSwiftExt
     - SwiftPrelude
 
+EXTERNAL SOURCES:
+  RxDataSourcesToRxCells:
+    :git: https://github.com/GeneralD/RxDataSourcesToRxCells
+
+CHECKOUT OPTIONS:
+  RxDataSourcesToRxCells:
+    :commit: 6687855e4221d2510a299fa85fb89bf552addbe3
+    :git: https://github.com/GeneralD/RxDataSourcesToRxCells
+
 SPEC CHECKSUMS:
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
   Instantiate: 62516e7dde448721c1f5815a9ee7e0669d034d52
@@ -98,6 +114,7 @@ SPEC CHECKSUMS:
   RxCells: bdf6673a05f8ee58b3dd7b28c3e236da7b5e0e98
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
+  RxDataSourcesToRxCells: 73b8cea4987af5c1d29bdfa22b55174125102eef
   RxDocumentPicker: f3dc33b7b9b3e016e73c503800f15f6df151c66f
   RxOptional: b1fcd60856807a564c0215c2184b8d33e7826dc2
   RxPermission: acca72f2f9b75cfb5c90e34030ab774f4088bccb
@@ -106,6 +123,6 @@ SPEC CHECKSUMS:
   RxSwiftExt: 4ca80336f43c28f11a2825cdd2fc61dd6c044697
   SwiftPrelude: 60d747dc5e225296fd9a304e0aa877c8d0e30d89
 
-PODFILE CHECKSUM: fe49a87ec6d67b62aead8ad2c36e144019c1de56
+PODFILE CHECKSUM: e9cea2c6d29c58c030ae5ac2258520a4e41ed620
 
 COCOAPODS: 1.9.1

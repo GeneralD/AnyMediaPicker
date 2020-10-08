@@ -16,4 +16,10 @@ public extension Reactive where Base: UIViewController {
 			vc.present(view, animated: true)
 		}
 	}
+	
+	var pushViewController: Binder<UIViewController> {
+		.init(self.base) { vc, view in
+			vc.navigationController?.pushViewController(view, animated: true)
+		}
+	}
 }
