@@ -29,86 +29,61 @@ protocol MediaListViewModelInput {
 
 protocol MediaListViewModelOutput {
 	var items: Observable<[MediaCellModel]> { get }
-	var present: Observable<UIViewController> { get }
+	var present: Observable<UIViewController?> { get }
 	var isTableEditing: Observable<Bool> { get }
-	var editButtonImage: Observable<UIImage> { get }
+	var editButtonImage: Observable<UIImage?> { get }
 	var areMediaButtonsEnabled: Observable<Bool> { get }
 }
 
 final class MediaListViewModel: MediaListViewModelInput, MediaListViewModelOutput {
 	
 	// MARK: Inputs
-	let deleteButtonTapped: AnyObserver<()>
-	let cameraButtonTapped: AnyObserver<()>
-	let photoButtonTapped: AnyObserver<()>
-	let fileButtonTapped: AnyObserver<()>
-	let editButtonTapped: AnyObserver<()>
-	let itemMoved: AnyObserver<ItemMovedEvent>
-	let itemDeleted: AnyObserver<IndexPath>
+	@RxTrigger var deleteButtonTapped: AnyObserver<()>
+	@RxTrigger var cameraButtonTapped: AnyObserver<()>
+	@RxTrigger var photoButtonTapped: AnyObserver<()>
+	@RxTrigger var fileButtonTapped: AnyObserver<()>
+	@RxTrigger var editButtonTapped: AnyObserver<()>
+	@RxTrigger var itemMoved: AnyObserver<ItemMovedEvent>
+	@RxTrigger var itemDeleted: AnyObserver<IndexPath>
 	
 	// MARK: Outputs
-	let items: Observable<[MediaCellModel]>
-	let present: Observable<UIViewController>
-	let isTableEditing: Observable<Bool>
-	let editButtonImage: Observable<UIImage>
-	let areMediaButtonsEnabled: Observable<Bool>
+	@RxProperty(value: []) var items: Observable<[MediaCellModel]>
+	@RxProperty(value: nil) var present: Observable<UIViewController?>
+	@RxProperty(value: false) var isTableEditing: Observable<Bool>
+	@RxProperty(value: nil) var editButtonImage: Observable<UIImage?>
+	@RxProperty(value: true) var areMediaButtonsEnabled: Observable<Bool>
 	
 	private let disposeBag = DisposeBag()
 	
 	init(model: MediaListModel) {
-		let _deleteButtonTapped = PublishSubject<()>()
-		self.deleteButtonTapped = _deleteButtonTapped.asObserver()
-		
-		let _cameraButtonTapped = PublishSubject<()>()
-		self.cameraButtonTapped = _cameraButtonTapped.asObserver()
-		
-		let _photoButtonTapped = PublishSubject<()>()
-		self.photoButtonTapped = _photoButtonTapped.asObserver()
-		
-		let _fileButtonTapped = PublishSubject<()>()
-		self.fileButtonTapped = _fileButtonTapped.asObserver()
-		
-		let _editButtonTapped = PublishSubject<()>()
-		self.editButtonTapped = _editButtonTapped.asObserver()
-		
-		let _itemMoved = PublishSubject<ItemMovedEvent>()
-		self.itemMoved = _itemMoved.asObserver()
-		
-		let _itemDeleted = PublishSubject<IndexPath>()
-		self.itemDeleted = _itemDeleted.asObserver()
-		
-		let _items = BehaviorRelay<[MediaCellModel]>(value: [])
-		self.items = _items.asObservable()
-		
-		let _present = PublishRelay<UIViewController>()
-		self.present = _present.asObservable()
-		
-		let _isTableEditing = BehaviorRelay(value: false)
-		self.isTableEditing = _isTableEditing.asObservable()
-		
-		let _editButtonImage = PublishRelay<UIImage>()
-		self.editButtonImage = _editButtonImage.asObservable()
-		
-		let _areMediaButtonsEnabled = BehaviorRelay(value: true)
-		self.areMediaButtonsEnabled = _areMediaButtonsEnabled.asObservable()
-		
-		_deleteButtonTapped
+		$deleteButtonTapped
 			.mapTo([])
-			.bind(to: _items)
+			.bind(to: $items)
 			.disposed(by: disposeBag)
 		
 		let addItem = PublishRelay<MediaCellModel>()
 		addItem
 			.map(Array.init(just: ))
-			.withLatestFrom(_items, resultSelector: +)
-			.bind(to: _items)
+			.withLatestFrom($items, resultSelector: +)
+			.bind(to: $items)
 			.disposed(by: disposeBag)
 		
-		_cameraButtonTapped
+		let newImagePicker: Observable<UIImagePickerController> = $cameraButtonTapped
 			.flatMapTo(defer: Permission.camera.rx.permission)
 			.filter(.authorized)
-			.mapTo(defer: UIImagePickerController() |> \.sourceType … .camera)
-			.do(onNext: _present.accept)
+			.mapTo(defer: .init() |> \.sourceType … .camera)
+			.merge($photoButtonTapped
+					.flatMapTo(defer: Permission.photos.rx.permission)
+					.filter(.authorized)
+					.mapTo(defer: .init() |> \.sourceType … .photoLibrary))
+			.share()
+		
+		newImagePicker
+			.ofType(UIViewController.self)
+			.bind(to: $present)
+			.disposed(by: disposeBag)
+		
+		newImagePicker
 			.flatMap(\.rx.didFinishPickingMediaWithInfo)
 			.map(\.[.phAsset])
 			.ofType(PHAsset.self)
@@ -116,51 +91,39 @@ final class MediaListViewModel: MediaListViewModelInput, MediaListViewModelOutpu
 			.bind(to: addItem)
 			.disposed(by: disposeBag)
 		
-		_photoButtonTapped
-			.flatMapTo(defer: Permission.photos.rx.permission)
-			.filter(.authorized)
-			.mapTo(defer: UIImagePickerController() |> \.sourceType … .photoLibrary)
-			.do(onNext: _present.accept)
-			.flatMap(\.rx.didFinishPickingMediaWithInfo)
-			.map(\.[.phAsset])
-			.ofType(PHAsset.self)
-			.flatMap(\.rx.cellModel)
-			.bind(to: addItem)
-			.disposed(by: disposeBag)
-		
-		_fileButtonTapped
+		$fileButtonTapped
 			.mapTo(defer: UIDocumentPickerViewController(documentTypes: ["public.image"], in: .import))
-			.do(onNext: _present.accept)
+			.do(onNext: $present.accept)
 			.flatMap(\.rx.didPickDocumentsAt)
 			.compactMap(\.first?.cellModel)
 			.bind(to: addItem)
 			.disposed(by: disposeBag)
 		
-		_editButtonTapped
-			.withLatestFrom(_isTableEditing)
+		$editButtonTapped
+			.withLatestFrom($isTableEditing)
 			.not()
-			.bind(to: _isTableEditing)
+			.bind(to: $isTableEditing)
 			.disposed(by: disposeBag)
 		
-		_isTableEditing
+		$isTableEditing
 			.map(true: "pencil.slash", false: "pencil")
 			.compactMap(UIImage.init(systemName: ))
-			.bind(to: _editButtonImage)
+			.bind(to: $editButtonImage)
 			.disposed(by: disposeBag)
 		
-		_isTableEditing
+		$isTableEditing
 			.not()
-			.bind(to: _areMediaButtonsEnabled)
+			.bind(to: $areMediaButtonsEnabled)
 			.disposed(by: disposeBag)
 		
-		_itemDeleted
-			.withLatestFrom(_items) { $1.removing(at: $0.row) }
-			.bind(to: _items)
+		$itemDeleted
+			.withLatestFrom($items) { $1.removing(at: $0.row) }
+			.bind(to: $items)
 			.disposed(by: disposeBag)
 		
-		_itemMoved
-			.withLatestFrom(_items) { $1.swapping(at: $0.sourceIndex.row, $0.destinationIndex.row) }
-			.bind(to: _items)
+		$itemMoved
+			.withLatestFrom($items) { $1.swapping(at: $0.sourceIndex.row, $0.destinationIndex.row) }
+			.bind(to: $items)
 			.disposed(by: disposeBag)
 	}
 }

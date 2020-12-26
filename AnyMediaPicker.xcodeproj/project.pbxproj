@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		27D42A7522EFE45443A08182 /* Pods_AnyMediaPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA94714E4497189D0C39EB1D /* Pods_AnyMediaPicker.framework */; };
 		B31D26D52518B2AF006E9D93 /* ObservableTypeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31D26D42518B2AF006E9D93 /* ObservableTypeExtension.swift */; };
+		B32BCD22259707A5001A92F4 /* RxTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32BCD20259707A5001A92F4 /* RxTrigger.swift */; };
+		B32BCD23259707A5001A92F4 /* RxProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32BCD21259707A5001A92F4 /* RxProperty.swift */; };
+		B32BCD272597081A001A92F4 /* AnyObserverConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32BCD262597081A001A92F4 /* AnyObserverConvertible.swift */; };
 		B3AD9A702517B3D7008926BB /* UIImagePickerController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AD9A6F2517B3D7008926BB /* UIImagePickerController+Rx.swift */; };
 		B3AD9A722517C210008926BB /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AD9A712517C210008926BB /* UIViewController+Rx.swift */; };
 		B3AD9A752518421C008926BB /* PHAsset+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AD9A742518421C008926BB /* PHAsset+App.swift */; };
@@ -30,6 +33,9 @@
 /* Begin PBXFileReference section */
 		7D5CE38843FF39DD7AEAEA87 /* Pods-AnyMediaPicker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnyMediaPicker.debug.xcconfig"; path = "Target Support Files/Pods-AnyMediaPicker/Pods-AnyMediaPicker.debug.xcconfig"; sourceTree = "<group>"; };
 		B31D26D42518B2AF006E9D93 /* ObservableTypeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableTypeExtension.swift; sourceTree = "<group>"; };
+		B32BCD20259707A5001A92F4 /* RxTrigger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxTrigger.swift; sourceTree = "<group>"; };
+		B32BCD21259707A5001A92F4 /* RxProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxProperty.swift; sourceTree = "<group>"; };
+		B32BCD262597081A001A92F4 /* AnyObserverConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyObserverConvertible.swift; sourceTree = "<group>"; };
 		B3AD9A6F2517B3D7008926BB /* UIImagePickerController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImagePickerController+Rx.swift"; sourceTree = "<group>"; };
 		B3AD9A712517C210008926BB /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
 		B3AD9A742518421C008926BB /* PHAsset+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PHAsset+App.swift"; sourceTree = "<group>"; };
@@ -81,6 +87,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B32BCD1F259707A5001A92F4 /* PropertyWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				B32BCD20259707A5001A92F4 /* RxTrigger.swift */,
+				B32BCD21259707A5001A92F4 /* RxProperty.swift */,
+			);
+			path = PropertyWrapper;
+			sourceTree = "<group>";
+		};
+		B32BCD2925970871001A92F4 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				B3AD9A712517C210008926BB /* UIViewController+Rx.swift */,
+				B3AD9A6F2517B3D7008926BB /* UIImagePickerController+Rx.swift */,
+				B3ADC414251B872B00EFE63B /* UIBarButtonItem+Rx.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
 		B3AD9A6A2517A5FB008926BB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -94,10 +119,10 @@
 		B3AD9A73251841E7008926BB /* Rx */ = {
 			isa = PBXGroup;
 			children = (
-				B3AD9A712517C210008926BB /* UIViewController+Rx.swift */,
-				B3AD9A6F2517B3D7008926BB /* UIImagePickerController+Rx.swift */,
+				B32BCD2925970871001A92F4 /* UIKit */,
+				B32BCD1F259707A5001A92F4 /* PropertyWrapper */,
+				B32BCD262597081A001A92F4 /* AnyObserverConvertible.swift */,
 				B31D26D42518B2AF006E9D93 /* ObservableTypeExtension.swift */,
-				B3ADC414251B872B00EFE63B /* UIBarButtonItem+Rx.swift */,
 			);
 			path = Rx;
 			sourceTree = "<group>";
@@ -328,6 +353,8 @@
 				B3AD9A752518421C008926BB /* PHAsset+App.swift in Sources */,
 				B3F0DC84251113B100007868 /* MediaCellModel.swift in Sources */,
 				B3F0DC4D2511068A00007868 /* MediaListViewController.swift in Sources */,
+				B32BCD272597081A001A92F4 /* AnyObserverConvertible.swift in Sources */,
+				B32BCD23259707A5001A92F4 /* RxProperty.swift in Sources */,
 				B31D26D52518B2AF006E9D93 /* ObservableTypeExtension.swift in Sources */,
 				B3F0DC88251113DF00007868 /* MediaCellView.swift in Sources */,
 				B3F0DC492511068A00007868 /* AppDelegate.swift in Sources */,
@@ -336,6 +363,7 @@
 				B3ADC415251B872B00EFE63B /* UIBarButtonItem+Rx.swift in Sources */,
 				B3AD9A702517B3D7008926BB /* UIImagePickerController+Rx.swift in Sources */,
 				B3AD9A722517C210008926BB /* UIViewController+Rx.swift in Sources */,
+				B32BCD22259707A5001A92F4 /* RxTrigger.swift in Sources */,
 				B3F0DC8225110A1D00007868 /* MediaListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
